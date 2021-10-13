@@ -21,12 +21,16 @@ module.exports = async function(options) {
     maxConcurrency: 2,
     puppeteerOptions: { ...puppeteerArgs, headless: true },
   });
+  
+  for (var i=0;i<content.length;i++){
+      content[i]["___INDEX___"]=i;
+  }
 
   let buffers = []
 
   await cluster.task(async ({ page, data: { content, output, selector } }) => {
-    const buffer = await makeScreenshot(page, { ...options, content, output, selector })    
-    buffers.push(buffer);
+    const buffer = await makeScreenshot(page, { ...options, content, output, selector })
+    buffers[content["___INDEX___"]]=buffer;
   });
 
   cluster.on('taskerror', (err, data) => {
