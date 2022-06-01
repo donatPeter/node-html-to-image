@@ -22,7 +22,7 @@ module.exports = async function(options) {
     puppeteerOptions: { ...puppeteerArgs, headless: true },
   });
   
-  for (var i=0;i<content.length;i++){
+  for (var i=0;i<(content || []).length;i++){
       content[i]["___INDEX___"]=i;
   }
 
@@ -30,7 +30,7 @@ module.exports = async function(options) {
 
   await cluster.task(async ({ page, data: { content, output, selector } }) => {
     const buffer = await makeScreenshot(page, { ...options, content, output, selector })
-    buffers[content["___INDEX___"]]=buffer;
+    buffers[(content["___INDEX___"] || 0)]=buffer;
   });
 
   cluster.on('taskerror', (err, data) => {
