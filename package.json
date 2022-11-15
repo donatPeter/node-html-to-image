@@ -18,10 +18,16 @@
     "build": "tsc"
   },
   "files": [
-    "src",
-    "types",
-    "!src/*.spec.js",
-    "dist/*"
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/main.d.ts",
+    "dist/main.js",
+    "dist/screenshot.d.ts",
+    "dist/screenshot.js",
+    "dist/types.d.ts",
+    "dist/types.js",
+    "dist/models/Screenshot.d.ts",
+    "dist/models/Screenshot.js"
   ],
   "devDependencies": {
     "@babel/core": "^7.18.6",
