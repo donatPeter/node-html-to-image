@@ -1,2 +1,1 @@
-import { nodeHtmlToImage } from "./main";
-export = nodeHtmlToImage;
+export { nodeHtmlToImage } from "./main";
